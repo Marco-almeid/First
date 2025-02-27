@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+/* comentario em Bloco
+Nome
+Vesão
+Sistema Operacional
+Data
+-
+-
+*/
+int main()
+{
+
+    int inteiro = 65;
+    double varDouble = 215.17;
+
+    // Caracteres de formatação.
+    // Apresentar a variavel inteiro de diferentes formas.
+
+    printf("\n Valor da variavel inteiro (inteiros):     %d", inteiro);
+    printf("\n Valor da variavel inteiro (hexadecimal):  %x", inteiro);
+    printf("\n Valor da variavel inteiro (octal)         %o", inteiro);
+    printf("\n Valor da variavel inteiro (flutuante);    %f", inteiro);
+
+    // Tavela ASCII
+
+    printf("\n Valor da variavel inteiro (caractere):    %c", inteiro);
+    printf("\n Valor da variavel varDouble (flutuante):  %f", varDouble);
+
+    return 0;
+}
