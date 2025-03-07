@@ -18,5 +18,5 @@ int main()
     
     metade= num / 2;
     
-    printf( "\nA metade do númeto é: %f\n", metade );
+    printf( "\nA metade do número é: %f\n", metade );
 }
