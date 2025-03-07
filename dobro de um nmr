@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <locale.h>
-Nome = MArco Antônio
+Nome = Marco Antônio
 data
 -
 -
@@ -10,7 +10,8 @@ int main()
     setlocale (  LC_ALL, "Portuguese" );
     
     float num, dobro;
-    
+
+    // Solicita um numero ao Usuário
     printf( "Entre com um número: " );
     scanf( "%f", &num );
     
