@@ -1,0 +1,26 @@
+#include <stdio.h>
+name - Marco Antônio 
+date-
+-
+-
+
+int main() {
+    float distancia, tempo, velocidade_media;
+
+    // Solicita os valores ao usuário
+    printf("Digite a distância percorrida (em km): ");
+    scanf("%f", &distancia);
+    
+    printf("Digite o tempo gasto (em horas): ");
+    scanf("%f", &tempo);
+
+    // Verifica se o tempo não é zero para evitar divisão por zero
+    if (tempo <= 0) {
+        printf("O tempo deve ser maior que zero!\n");
+    } else {
+        // Calcula a velocidade média
+        velocidade_media = distancia / tempo;
+        printf("A velocidade média foi de %.2f km/h\n", velocidade_media);
+    }
+
+    return 0;
