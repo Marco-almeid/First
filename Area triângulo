@@ -1,0 +1,23 @@
+nome
+data
+-
+-
+
+#include <stdio.h>
+
+int main() {
+    float base, altura, triângulo;
+    
+    printf("Digite o valor da base do triângulo: ");
+    scanf("%f", &base);
+    
+    printf("Digite o valor da altura do triângulo: ");
+    scanf("%f", &altura);
+
+    triângulo = base * altura;
+    triângulo = triângulo / 2  ;
+    
+    printf("O valor do triângulo é: %.2f\n", triângulo);
+
+    return 0;
+}
