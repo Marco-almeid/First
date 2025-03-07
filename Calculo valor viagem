@@ -1,0 +1,26 @@
+nome
+data
+-
+-
+
+#include <stdio.h>
+
+int main(){
+    float distância, consumo, preço;
+    float valor;
+    printf("Digite a distância que será percorrida (em km): ");
+    scanf("%f", &distância);
+    
+    printf("Digite o consumo do automóvel (em Km/litro): ");
+    scanf("%f", &consumo);
+    
+    printf("Digite o preço da gasolina (em R$): ");
+    scanf("%f", &preço);
+    
+    valor = distância / consumo;
+    valor = valor * preço;
+    
+    printf("O gasto da viagem será de R$%.2f reais", valor);
+    
+    return 0;
+}
