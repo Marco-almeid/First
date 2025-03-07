@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <locale.h>
+
+Nome - Marco Antônio
+data - 
+-
+-
+-
+
+int main()
+{
+    setlocale (  LC_ALL, "Portuguese" );
+    
+    float num, metade;
+    
+    printf( "Entre com um número: " );
+    scanf( "%f", &num );
+    
+    metade= num / 2;
+    
+    printf( "\nA metade do númeto é: %f\n", metade );
+}
