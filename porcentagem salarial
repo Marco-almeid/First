@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float salario, aumento, valAum;
+
+    printf("Digite o valor do seu salario: ");
+    scanf("%f", &salario);
+
+    printf("\nAgora digite a porcentagem de aumento salarial: ");
+    scanf("%f", &aumento);
+    // fórmula de aumento de porcentagem
+    valAum = salario * aumento / 100;
+
+    salario = valAum + salario;
+    // (\n) = no inicio para pular uma linha antes e no final para uma linha depois
+    printf("\no valor de aumento e de R$%.2f, e o seu salario total e R$%.2f\n", valAum, salario);
+
+    return 0;
+}
