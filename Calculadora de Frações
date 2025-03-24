@@ -27,111 +27,131 @@ int main(int args, char * arg[])
         printf("4. Dividir\n");
         printf("5. Fim\n");
         printf("Escolha uma opção: ");
-        r = getche(); // Lê uma tecla pressionada
+        r = getchar();
 
-        switch (r)
-        {
+        if (r == '5') {
+            break;
+        }
+
+        // Obter as frações
+        obter_fracoes();
+
+        // Realizar a operação baseada na escolha
+        switch (r) {
             case '1':
-                obter_fracoes();
                 somar_fracoes(a, b, c, d);
                 break;
             case '2':
-                obter_fracoes();
                 subtrair_fracoes(a, b, c, d);
                 break;
             case '3':
-                obter_fracoes();
                 multiplicar_fracoes(a, b, c, d);
                 break;
             case '4':
-                obter_fracoes();
                 dividir_fracoes(a, b, c, d);
                 break;
-            case '5':
-                printf("\nPrograma encerrado.\n");
-                exit(0);
             default:
-                printf("\nOpção inválida! Tente novamente.\n");
-                break;
+                printf("Opção inválida!\n");
         }
 
-        printf("\nPressione qualquer tecla para continuar...");
-        getche(); // Espera o usuário pressionar uma tecla para continuar
-    }
-}
-
-// Função para obter as frações do usuário
-void obter_fracoes()
-{
-    printf("\nDigite a primeira fração (numerador/denominador): ");
-    scanf("%d/%d", &a, &b);
-
-    printf("Digite a segunda fração (numerador/denominador): ");
-    scanf("%d/%d", &c, &d);
-}
-
-// Função para somar frações
-void somar_fracoes(int x, int y, int u, int v)
-{
-    int numerador = (x * v) + (y * u);
-    int denominador = y * v;
-    
-    simplificar_fracoes(&numerador, &denominador);
-    
-    printf("\nResultado da soma: %d/%d\n", numerador, denominador);
-}
-
-// Função para subtrair frações
-void subtrair_fracoes(int x, int y, int u, int v)
-{
-    int numerador = (x * v) - (y * u);
-    int denominador = y * v;
-    
-    simplificar_fracoes(&numerador, &denominador);
-    
-    printf("\nResultado da subtração: %d/%d\n", numerador, denominador);
-}
-
-// Função para multiplicar frações
-void multiplicar_fracoes(int x, int y, int u, int v)
-{
-    int numerador = x * u;
-    int denominador = y * v;
-    
-    simplificar_fracoes(&numerador, &denominador);
-    
-    printf("\nResultado da multiplicação: %d/%d\n", numerador, denominador);
-}
-
-// Função para dividir frações
-void dividir_fracoes(int x, int y, int u, int v)
-{
-    if (u == 0)
-    {
-        printf("\nErro: Não é possível dividir por zero.\n");
-        return;
+        printf("\nPressione qualquer tecla para continuar...\n");
+        getchar();
     }
 
-    int numerador = x * v;
-    int denominador = y * u;
+    return 0;
+}
 
-    simplificar_fracoes(&numerador, &denominador);
+// Função para ler as frações
+void obter_fracoes() {
+    printf("\nDigite a primeira fração (numerador e denominador): ");
+    printf("\nNumerador: ");
+    scanf("%d", &a);
+    printf("Denominador: ");
+    scanf("%d", &b);
 
-    printf("\nResultado da divisão: %d/%d\n", numerador, denominador);
+    printf("\nDigite a segunda fração (numerador e denominador): ");
+    printf("\nNumerador: ");
+    scanf("%d", &c);
+    printf("Denominador: ");
+    scanf("%d", &d);
+
+    if (b == 0 || d == 0) {
+        printf("\nErro: O denominador não pode ser zero!\n");
+        exit(1);
+    }
 }
 
 // Função para simplificar frações
-void simplificar_fracoes(int *x, int *y)
-{
-    int i, menor = (*x < *y) ? *x : *y;
+void simplificar_fracoes(int *x, int *y) {
+    int mdc, a = *x, b = *y, temp;
 
-    for (i = menor; i > 1; i--)
-    {
-        if (*x % i == 0 && *y % i == 0)
-        {
-            *x /= i;
-            *y /= i;
-            break;
-        }
+    // Algoritmo de Euclides para encontrar o MDC
+    while (b != 0) {
+        temp = b;
+        b = a % b;
+        a = temp;
     }
+    mdc = a;
+
+    *x = *x / mdc;
+    *y = *y / mdc;
+
+    // Garantir que o denominador seja sempre positivo
+    if (*y < 0) {
+        *x = -*x;
+        *y = -*y;
+    }
+}
+
+// Função para somar duas frações
+void somar_fracoes(int x, int y, int u, int v) {
+    int num, den;
+
+    // Soma de frações: (x/y) + (u/v)
+    num = x * v + u * y;
+    den = y * v;
+
+    simplificar_fracoes(&num, &den);
+    printf("Resultado da soma: %d/%d\n", num, den);
+}
+
+// Função para subtrair duas frações
+void subtrair_fracoes(int x, int y, int u, int v) {
+    int num, den;
+
+    // Subtração de frações: (x/y) - (u/v)
+    num = x * v - u * y;
+    den = y * v;
+
+    simplificar_fracoes(&num, &den);
+    printf("Resultado da subtração: %d/%d\n", num, den);
+}
+
+// Função para multiplicar duas frações
+void multiplicar_fracoes(int x, int y, int u, int v) {
+    int num, den;
+
+    // Multiplicação de frações: (x/y) * (u/v)
+    num = x * u;
+    den = y * v;
+
+    simplificar_fracoes(&num, &den);
+    printf("Resultado da multiplicação: %d/%d\n", num, den);
+}
+
+// Função para dividir duas frações
+void dividir_fracoes(int x, int y, int u, int v) {
+    int num, den;
+
+    // Divisão de frações: (x/y) / (u/v) -> (x/y) * (v/u)
+    if (u == 0) {
+        printf("\nErro: Não é possível dividir por zero!\n");
+        return;
+    }
+
+    num = x * v;
+    den = y * u;
+
+    simplificar_fracoes(&num, &den);
+    printf("Resultado da divisão: %d/%d\n", num, den);
 }
