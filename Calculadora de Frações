@@ -13,6 +13,8 @@ void simplificar_fracoes(int *x, int *y);
 // Variáveis globais para armazenar as frações
 int a, b, c, d;
 
+// Não mudei as variaveis pq eu consigo me identificar melhor com essas.
+
 int main(int args, char * arg[])
 {
     char r;
@@ -80,6 +82,7 @@ void obter_fracoes() {
         exit(1);
     }
 }
+// Não entendi direito quando o professor falou que tinha ou não que escrever as funções, ent eu escrevi.
 
 // Função para simplificar frações
 void simplificar_fracoes(int *x, int *y) {
