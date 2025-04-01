@@ -38,7 +38,7 @@ int main(int args, char * arg[])
         // Obter as frações
         obter_fracoes();
 
-        // Realizar a operação baseada na escolha
+        // Realizar a operação baseada na escolha usnado o switch
         switch (r) {
             case '1':
                 somar_fracoes(a, b, c, d);
@@ -76,7 +76,7 @@ void obter_fracoes() {
     scanf("%d", &c);
     printf("Denominador: ");
     scanf("%d", &d);
-
+// O if é para que se algum denominador for zero, vai terminar o programa
     if (b == 0 || d == 0) {
         printf("\nErro: O denominador não pode ser zero!\n");
         exit(1);
@@ -99,10 +99,10 @@ void simplificar_fracoes(int *x, int *y) {
     *x = *x / mdc;
     *y = *y / mdc;
 
-    // Garantir que o denominador seja sempre positivo
+    // Garante que o denominador seja sempre positivo
     if (*y < 0) {
         *x = -*x;
-        *y = -*y;
+        *y = -*y; // Faz a troca de sinais
     }
 }
 
